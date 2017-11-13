@@ -6,7 +6,7 @@ const Header = props => {
     return (
         <header className="header">
             <section className="header__logo">Тестовое задание</section>
-            <Search />
+            <Search getUsers={props.getUsers} />
         </header>
     );
 };

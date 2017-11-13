@@ -1,4 +1,4 @@
 import { connect } from 'react-redux';
-import Main from './Main.jsx';
+import Main, { mapStateToProps } from './Main.jsx';
 
-export default connect(state => state)(Main);
+export default connect(mapStateToProps)(Main);

@@ -7,6 +7,7 @@ class Search extends Component
         super(props);
 
         this.searchChange = this.searchChange.bind(this);
+        this.searchHandler = this.searchHandler.bind(this);
 
         this.state = {
             searchQuery: ''
@@ -18,11 +19,17 @@ class Search extends Component
         this.setState({ searchQuery: el.target.value });
     }
 
+    searchHandler()
+    {
+        this.props.getUsers(this.state.searchQuery);
+    }
+
     render()
     {
         return (
             <section className="search">
-                <input type="text" onChange={this.searchChange} value={this.state.searchQuery} />
+                <input type="text" className="search__input" onChange={this.searchChange} value={this.state.searchQuery} />
+                <button onClick={this.searchHandler}>Найти</button>
             </section>
         )
     }
