@@ -1,3 +1,4 @@
-import Search from './Search.jsx';
+import { connect } from 'react-redux';
+import Search, { mapDispatchToProps } from './Search.jsx';
 
-export default Search;
+export default connect(null, mapDispatchToProps)(Search);

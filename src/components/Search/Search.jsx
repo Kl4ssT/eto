@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import classnames from 'classnames';
+
+import * as searchActions from '../../actions/search.js';
+
+import './Search.scss';
 
 class Search extends Component
 {
@@ -26,13 +32,16 @@ class Search extends Component
 
     render()
     {
+
         return (
-            <section className="search">
-                <input type="text" className="search__input" onChange={this.searchChange} value={this.state.searchQuery} />
-                <button onClick={this.searchHandler}>Найти</button>
+            <section className={classnames('search', this.props.className)}>
+                <input type="text" className="search__input" onChange={this.searchChange} value={this.state.searchQuery} placeholder="Поиск..." />
+                <button className="search__btn" onClick={this.searchHandler}>Найти</button>
             </section>
         )
     }
 }
+
+export const mapDispatchToProps = dispatch => bindActionCreators(searchActions, dispatch);
 
 export default Search;

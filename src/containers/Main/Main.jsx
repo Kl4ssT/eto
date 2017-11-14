@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import Header from '../../components/Header';
+import UserList from '../../components/UserList';
 
-import * as Actions from '../../actions';
+import './Main.scss';
 
 class Main extends Component
 {
@@ -10,29 +11,15 @@ class Main extends Component
     constructor(props)
     {
         super(props);
-
-        this.getUsers = this.getUsers.bind(this);
-    }
-
-    getUsers(query)
-    {
-        this.props.dispatch(Actions.getUsers(query, 1));
     }
 
     render()
     {
         return (
-            <div class="main">
-                <Header getUsers={this.getUsers} />
-                <div>
-                    {this.props.users.map(user => {
-                        return (
-                            <div>
-                                <img src={user.photo_50} />
-                                <p>{user.first_name} {user.last_name}</p>
-                            </div>
-                        );
-                    })}
+            <div className="main">
+                <Header />
+                <div className="main__content">
+                    <UserList />
                 </div>
             </div>
         );
@@ -41,14 +28,8 @@ class Main extends Component
 
 export const mapStateToProps = state => {
     return {
-        users: state.search.items
+        users: state.users
     };
 }
-
-/*export const mapDispatchToProps = dispatch => {
-    return {
-
-    }
-}*/
 
 export default Main;

@@ -4,6 +4,8 @@ import { AppContainer } from 'react-hot-loader';
 
 import App from './scenes/App';
 
+import './index.scss';
+
 const renderApp = Component => {
     render(
         <AppContainer>

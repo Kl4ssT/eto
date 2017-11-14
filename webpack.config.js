@@ -25,16 +25,26 @@ module.exports = {
                 test: /\.(js|jsx)/,
                 exclude: /(node_modules|dist)/,
                 loader: 'babel-loader'
+            },
+            {
+                test: /\.(sass|scss)/,
+                exclude: /(node_modules|dist)/,
+                use: extractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader!sass-loader!autoprefixer-loader'
+                })
             }
         ]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
+        new extractTextPlugin('css/styles.css'),
         new htmlPlugin({
             template: path.join(PATHS.src, 'index.html'),
             files: {
-                js: ['bundle.js']
+                js: ['bundle.js'],
+                css: ['styles.css']
             }
         })
     ],

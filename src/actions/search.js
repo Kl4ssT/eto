@@ -1,14 +1,15 @@
-import axios from 'axios';
+import api from '../api';
 
-import * as types from '../constants/actionTypes';
+import { GET_USERS, ADD_USERS } from '../constants/actionTypes';
 
 export const getUsers = (query, page) => {
     return async dispatch => {
         try
         {
-            const users = await axios.post('http://localhost:3000/users', {query, page});
+            const users = await api.post('http://localhost:3000/users', {query, page});
+
             return dispatch({
-                type: types.GET_USERS,
+                type: GET_USERS,
                 payload: users.data.items
             });
         }
@@ -16,6 +17,5 @@ export const getUsers = (query, page) => {
         {
             console.log(err);
         }
-        
     }
 };

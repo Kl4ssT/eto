@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px 50px;
+    background: #101e6e;
+
+    &__logo {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 24px;
+    }
+
+    &__search {
+        margin-left: auto;
+    }
+}

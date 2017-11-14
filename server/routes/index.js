@@ -9,7 +9,7 @@ Router.post('/users', async ctx => {
             q: query,
             offset: parseInt(page) * 10,
             count: 10,
-            fields: 'photo_50'
+            fields: 'photo_200,has_photo'
         });
 
         ctx.body = users;
@@ -28,7 +28,7 @@ Router.get('/user/:user_id', async ctx => {
     {
         const user = await ctx.vk.api.call('users.get', {
             user_ids: user_id,
-            fields: 'about,bdate,city,has_photo,online,photo_max,relation,sex,status'
+            fields: 'bdate,city,has_photo,online,photo_max,relation,sex,status'
         });
 
         ctx.body = user;
@@ -37,6 +37,10 @@ Router.get('/user/:user_id', async ctx => {
     {
         console.log(err);
     }
+});
+
+Router.get('/token', ctx => {
+    ctx.body = ctx.vk.token;
 });
 
 module.exports = Router;
