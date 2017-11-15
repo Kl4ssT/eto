@@ -1,4 +1,4 @@
 import { connect } from 'react-redux';
-import UserList, { mapStateToProps } from './UserList.jsx';
+import UserList, { mapStateToProps, mapDispatchToProps } from './UserList.jsx';
 
-export default connect(mapStateToProps)(UserList);
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);

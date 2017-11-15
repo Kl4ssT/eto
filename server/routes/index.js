@@ -39,8 +39,4 @@ Router.get('/user/:user_id', async ctx => {
     }
 });
 
-Router.get('/token', ctx => {
-    ctx.body = ctx.vk.token;
-});
-
 module.exports = Router;

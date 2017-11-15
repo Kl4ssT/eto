@@ -14,33 +14,36 @@ class Search extends Component
 
         this.searchChange = this.searchChange.bind(this);
         this.searchHandler = this.searchHandler.bind(this);
-
-        this.state = {
-            searchQuery: ''
-        };
     }
 
     searchChange(el)
     {
-        this.setState({ searchQuery: el.target.value });
+        this.props.setQuery(el.target.value);
     }
 
     searchHandler()
     {
-        this.props.getUsers(this.state.searchQuery);
+        this.props.getUsers(this.props.search.page);
     }
 
     render()
     {
+        const { query } = this.props.search;
 
         return (
             <section className={classnames('search', this.props.className)}>
-                <input type="text" className="search__input" onChange={this.searchChange} value={this.state.searchQuery} placeholder="Поиск..." />
+                <input type="text" className="search__input" onChange={this.searchChange} value={query} placeholder="Поиск..." />
                 <button className="search__btn" onClick={this.searchHandler}>Найти</button>
             </section>
         )
     }
 }
+
+export const mapStateToProps = state => {
+    return {
+        search: state.search
+    };
+};
 
 export const mapDispatchToProps = dispatch => bindActionCreators(searchActions, dispatch);
 

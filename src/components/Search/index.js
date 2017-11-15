@@ -1,4 +1,4 @@
 import { connect } from 'react-redux';
-import Search, { mapDispatchToProps } from './Search.jsx';
+import Search, { mapStateToProps, mapDispatchToProps } from './Search.jsx';
 
-export default connect(null, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
